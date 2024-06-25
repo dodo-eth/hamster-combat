@@ -1,0 +1,14 @@
+[Unit]
+Description=Send Request Service
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /root/hamstercombat/app.py
+WorkingDirectory=/root/hamstercombat/
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=send_request_service
+
+[Install]
+WantedBy=multi-user.target
