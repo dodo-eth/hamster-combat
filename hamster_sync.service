@@ -10,7 +10,7 @@ StandardOutput=syslog
 StandardError=syslog
 StandardOutput=append:/root/hamstercombat/hamstercombat_service.out.log
 StandardError=append:/root/hamstercombat/hamstercombat_service.err.log
-SyslogIdentifier=send_request_service
+SyslogIdentifier=hamstercombat_service
 
 [Install]
 WantedBy=multi-user.target
