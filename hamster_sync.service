@@ -3,13 +3,13 @@ Description=Send Request Service
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/python3 /root/hamstercombat/app.py
-WorkingDirectory=/root/hamstercombat/
+ExecStart=/usr/bin/python3 /root/hamster-combat/app.py
+WorkingDirectory=/root/hamster-combat/
 Restart=always
 StandardOutput=syslog
 StandardError=syslog
-StandardOutput=append:/root/hamstercombat/hamstercombat_service.out.log
-StandardError=append:/root/hamstercombat/hamstercombat_service.err.log
+StandardOutput=append:/root/hamster-combat/hamstercombat_service.out.log
+StandardError=append:/root/hamster-combat/hamstercombat_service.err.log
 SyslogIdentifier=hamstercombat_service
 
 [Install]
