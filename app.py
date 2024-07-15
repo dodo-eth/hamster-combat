@@ -14,8 +14,8 @@ def send_request(url, request_type, token, proxy, data):
     headers = {
         'Accept-Language': 'en,en-US;q=0.9,ru-RU;q=0.8,ru;q=0.7',
         'Connection': 'keep-alive',
-        'Origin': 'https://hamsterkombat.io',
-        'Referer': 'https://hamsterkombat.io/',
+        'Origin': 'https://hamsterkombatgame.io',
+        'Referer': 'https://hamsterkombatgame.io/',
         'Sec-Fetch-Dest': 'empty',
         'Sec-Fetch-Mode': 'cors',
         'Sec-Fetch-Site': 'same-site',
@@ -82,7 +82,7 @@ def daily_reward_function(file_path):
         data = read_csv(file_path)
         for entry in data:
             data = {"taskId":"streak_days"}
-            send_request("https://api.hamsterkombat.io/clicker/check-task", "POST", entry['token'], entry['proxy'], data)
+            send_request("https://api.hamsterkombatgame.io/clicker/check-task", "POST", entry['token'], entry['proxy'], data)
             print(entry['discription'] + " streak_days function отработал")
         time.sleep(24 * 60 * 60)  # Спим 24 часа 
         
@@ -90,7 +90,7 @@ def sync_function(file_path):
     while True:
         data = read_csv(file_path)
         for entry in data:
-            send_request("https://api.hamsterkombat.io/clicker/sync", "POST", entry['token'], entry['proxy'], "")
+            send_request("https://api.hamsterkombatgame.io/clicker/sync", "POST", entry['token'], entry['proxy'], "")
             print(entry['discription'] + " Sync function отработал")
         time.sleep(2 * 60 * 60)  # Спим 2 часа (2 * 60 минут * 60 секунд)
 
@@ -103,7 +103,7 @@ def claim_dayly_cipher(combo):
             if isinstance(card, list):
                 card = card[0]
             data = {"cipher": card}
-            response_data = send_request("https://api.hamsterkombat.io/clicker/claim-daily-cipher","POST", entry['token'], entry['proxy'],data)
+            response_data = send_request("https://api.hamsterkombatgame.io/clicker/claim-daily-cipher","POST", entry['token'], entry['proxy'],data)
             print(f"Response Data: {response_data}")
 
 def claim_dayly_function(combo):
@@ -114,9 +114,9 @@ def claim_dayly_function(combo):
             if isinstance(card, list):
                 card = card[0]
             payload = {"upgradeId": card, "timestamp": current_timestamp} 
-            send_request("https://api.hamsterkombat.io/clicker/buy-upgrade","POST", entry['token'], entry['proxy'],payload)
+            send_request("https://api.hamsterkombatgame.io/clicker/buy-upgrade","POST", entry['token'], entry['proxy'],payload)
             
-        status,response = send_request("https://api.hamsterkombat.io/clicker/claim-daily-combo","POST", entry['token'], entry['proxy'],"")
+        status,response = send_request("https://api.hamsterkombatgame.io/clicker/claim-daily-combo","POST", entry['token'], entry['proxy'],"")
 
         print(entry['discription'] + " claim_dayly отработал")
     
